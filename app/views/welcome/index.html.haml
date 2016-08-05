@@ -1,0 +1,45 @@
+<!--
+========== SLIDE ========== --!>
+#slide.hide-on-tablet-and-down
+  - @slides.each do |slide|
+    .slide
+      = image_tag slide.images.first.attachment.url
+      %h2= link_to slide.title, slide.url
+
+<!--
+========== MAIN ========== --!>
+#main
+  .container
+    .grid
+      .col.mobile-12.tablet-12.pc-8
+        %h3.title.hide-on-tablet-and-down TIN MỚI
+        #news
+          - @articles.each do |article|
+            / article
+            .article.grid.card
+              .col.mobile-4
+                = link_to article_path(article.slug, format: "html") do
+                  = image_tag article.image_src
+              .col.mobile-8
+                %h2= link_to article.title, article_path(article.slug, format: "html")
+                .more
+                  %span.icon-categories= link_to article.category.name, category_path(article.category.slug)
+                  %span.icon-clock= article.created_at.strftime("%d/%m%Y")
+                %p.hide-on-tablet-and-down= article.summary
+
+      .col.mobile-12.tablet-12.pc-4.hide-on-tablet-and-down
+        %h3.title TIN HOT
+        #hot-news.card
+          - @hot_news.each do |article|
+            .article.grid
+              .col.mobile-4
+                = link_to article_path(article.slug, format: "html") do
+                  = image_tag article.image_src(:thumb)
+              .col.mobile-8
+                %h2= link_to article.title, article_path(article.slug, format: "html")
+        %h3.title THƯ VIỆN ẢNH
+        #galleries.card
+          - @galleries.each do |img|
+            .image
+              = image_tag img.attachment.url(:thumb)
+          = link_to "Xem tất cả", galleries_path, class: "view-all"

@@ -1,0 +1,14 @@
+<!--
+========== SIDEBAR ========== --!>
+%aside
+  %ul
+    - if current_admin.is_admin?
+      %li= link_to "DASHBOARD", admin_root_path, class: "dashboard icon-dashboard"
+    %li= link_to "ARTICLES", admin_articles_path, class: "icon-articles #{ "active" if controller_name == "articles" }"
+    %li= link_to "CATEGORIES", admin_categories_path, class: "icon-categories #{ "active" if controller_name == "categories" }"
+    %li= link_to "GALLERIES", admin_galleries_path, class: "icon-galleries #{ "active" if controller_name == "galleries" }"
+    %li= link_to "SLIDES", admin_slides_path, class: "icon-slide #{ "active" if controller_name == "slides" }"
+    %li= link_to "LOGS", admin_logs_path, class: "icon-logs #{ "active" if controller_name == "logs" }"
+    - if current_admin.is_admin?
+      %li= link_to "USERS", admin_users_path, class: "icon-people #{ "active" if controller_name == "users" && action_name == "index" }"
+    %li= link_to "SETTINGS", admin_settings_path, class: "icon-settings #{ "active" if controller_name == "users" && action_name == "edit" }"

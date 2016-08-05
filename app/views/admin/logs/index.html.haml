@@ -1,0 +1,19 @@
+.title.grid
+  .col.mobile-10
+    %h2 Activity Log
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    /
+
+.content
+  - if @logs.present?
+    %ul.logs
+      - @logs.each do |log|
+        %li
+          .avatar
+            = image_tag "no-avatar.jpg"
+          %strong= link_to log.admin.username , admin_log_path(log.admin.username)
+          = log.content.html_safe
+          %span= log.created_at.strftime("%d %B, %Y - %H:%M")
+  - else
+    %i Nothing to show

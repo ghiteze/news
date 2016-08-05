@@ -1,0 +1,44 @@
+= message @article
+
+.title.grid
+  .col.mobile-10
+    %h2 Lorem Ipsum is simply dummy text of the printing and typesetting industry
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = link_to "Back", admin_articles_path, class: "btn icon-back"
+
+.content
+  = form_for [:admin, @article], html: { multipart: true } do |f|
+    .grid
+      .col.mobile-12
+        .field
+          = image_tag @article.image_src(:thumb), class: "image-preview"
+          = file_field_tag :images, id: "file", class: "image-upload"
+          %label{ for: "file", class: "icon-upload" } Upload photo
+        .field
+          %label Title
+          = f.text_field :title, id: "name"
+        .field
+          %label Slug
+          = f.text_field :slug, id: "slug"
+        .field
+          %label Summary
+          = f.text_field :summary
+        .field
+          %label Category
+          = f.select :category_id, Category.all.collect{ |c| [c.name, c.id] }, :include_blank => "Choose"
+        .field
+          %label Content
+          = f.cktext_area :content, :ckeditor => { :toolbar => 'mini', :height => 350 }
+        .field
+          %label Tags (Press Enter for a new Tag)
+          #chips
+            = f.hidden_field :_tags, class: "chips-value", value: "#{@article.all_tags.join(",")}"
+            .chips-show
+              - @article.all_tags.each do |tag|
+                %span.chip= tag
+              %input{ type: "text", class: "chips-input" }
+        .field
+          = f.button "Submit", class: "btn icon-check"
+
+

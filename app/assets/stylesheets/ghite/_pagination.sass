@@ -1,0 +1,31 @@
+.pagination
+  width: 100%
+  display: inline-block
+  text-align: center
+  margin-top: $scale
+
+  .first-page,
+  .last-page
+    width: 30px
+    height: 30px
+    line-height: 30px
+    text-align: center
+
+.pages
+  a
+    display: inline-block
+    width: 30px
+    height: 30px
+    line-height: 30px
+    background-color: #e4e8eb
+    text-align: center
+    border-radius: 100%
+    cursor: pointer
+    margin-left: $scale/2
+    margin-right: $scale/2
+    transition: all 0.35s
+
+    &.active,
+    &:hover
+      background-color: #ff8a65
+      color: #fff

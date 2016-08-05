@@ -1,0 +1,38 @@
+#breadcrumb.hide-on-tablet-and-down
+  .container
+    %ul
+      %li= link_to "", root_path, class: "icon-home"
+      %li.icon-forward
+      %li= link_to "#{@category.name}", category_path(@category.slug)
+
+<!--
+========== MAIN ========== --!>
+#main
+  .container
+    .grid
+      .col.mobile-12.tablet-12.pc-8
+        %h3.title.hide-on-tablet-and-down= @category.name
+        #news{ data: { category: @category.slug } }
+          - @articles.each do |article|
+            - puts article
+            / article
+            .article.grid.card
+              .col.mobile-4
+                = link_to article_path(article.slug, format: "html") do
+                  = image_tag article.images.first.attachment.url(:medium)
+              .col.mobile-8
+                %h2= link_to article.title, article_path(article.slug, format: "html")
+                .more
+                  %span.icon-categories= link_to article.category.name, category_path(article.category.slug)
+                  %span.icon-clock= article.created_at.strftime("%d/%m%Y")
+                %p.hide-on-tablet-and-down= article.summary
+      .col.mobile-12.tablet-12.pc-4.hide-on-tablet-and-down
+        %h3.title TIN HOT
+        #hot-news.card
+          - @hot_news.each do |article|
+            .article.grid
+              .col.mobile-4
+                = link_to article_path(article.slug, format: "html") do
+                  = image_tag article.image_src(:thumb)
+              .col.mobile-8
+                %h2= link_to article.title, article_path(article.slug, format: "html")

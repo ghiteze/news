@@ -1,0 +1,17 @@
+.title.grid
+  .col.mobile-10
+    %h2 Lorem Ipsum is simply dummy text of the printing and typesetting industry
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = link_to "Back", admin_logs_path, class: "btn icon-back"
+
+.content
+  %ul.logs
+    - @logs.each do |log|
+      %li
+        %p
+          .avatar
+            = image_tag "no-avatar.jpg"
+          %strong= link_to log.admin.username , admin_log_path(log.admin.username)
+          = log.content.html_safe
+        %span= log.created_at.strftime("%d %B, %Y - %H:%M")

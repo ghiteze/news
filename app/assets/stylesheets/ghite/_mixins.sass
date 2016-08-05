@@ -1,0 +1,6 @@
+@mixin grid ($device)
+  $i: 1
+  @while ($i <= 12)
+    &.#{$device}-#{$i}
+      width: unquote(100/(12/$i) + '%')
+    $i: $i + 1

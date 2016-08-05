@@ -1,0 +1,26 @@
+= message @slide
+
+.title.grid
+  .col.mobile-10
+    %h2 Lorem Ipsum is simply dummy text of the printing and typesetting industry
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = link_to "Back", admin_slides_path, class: "btn icon-back"
+
+.content
+  = form_for [:admin, @slide], html: { multipart: true } do |f|
+    .field
+      = image_tag @slide.image_src(:thumb), class: "image-preview"
+      = file_field_tag :image, id: "file", class: "image-upload"
+      %label.icon-upload{ for: "file" } Upload photo
+    .field
+      %label Title
+      = f.text_field :title
+    .field
+      %label Url
+      = f.text_field :url
+    .field
+      = f.check_box :is_active
+      %label{ for: "slide_is_active" } Active
+    .field
+      = f.button "Submit", class: "btn icon-check"

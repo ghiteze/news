@@ -1,0 +1,11 @@
+!!!5
+%html
+  %head
+    %meta{ charset: "utf-8" }
+    %title Login
+    = csrf_meta_tags
+    = stylesheet_link_tag 'admin/application'
+  %body
+    #main
+      = yield
+    = javascript_include_tag 'admin/application'

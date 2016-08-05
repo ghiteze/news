@@ -1,0 +1,28 @@
+!!!5
+%html
+  %head
+    %meta{ charset: "utf-8" }
+    %title News
+    = csrf_meta_tags
+    = stylesheet_link_tag 'admin/application'
+  %body
+    .loading
+      .rotate
+        .dot1
+        .dot2
+    :javascript
+      (function (w, d) {
+        var ld = d.getElementsByClassName('loading')[0];
+        ld.style.display = 'block';
+        d.body.style.overflow = 'hidden';
+        w.onload = function () {
+          ld.style = '';
+          d.body.style = '';
+        };
+      }(window, document));
+    #wrapper
+      = render 'admin/shared/header'
+      = render 'admin/shared/sidebar'
+      #main
+        = yield
+      = javascript_include_tag 'admin/application'

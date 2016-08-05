@@ -1,0 +1,85 @@
+nav
+  height: $side-nav-height
+
+  .brand
+    display: inline-block
+    height: $side-nav-height
+    line-height: $side-nav-height
+
+  .side-nav-btn
+    display: none
+    background-color: transparent
+    border: 0
+    outline: 0
+    &:before
+      font-size: $scale*4
+
+  .side-nav-collapse
+    float: right
+    height: $side-nav-height
+    line-height: $side-nav-height
+
+    li
+      a
+        color: #fff
+        padding: $scale*2
+        -webkit-transition: all 0.35s
+        transition: all 0.35s
+
+        &.active,
+        &:hover
+          color: $side-nav-hover-color
+
+
+
+// tablet and down
+@media (max-width: 1024px)
+  nav
+    height: $side-nav-mobile-height
+
+    .brand
+      display: block
+      width: $side-nav-mobile-height
+      height: $side-nav-mobile-height
+      line-height: $side-nav-mobile-height
+      text-align: center
+      margin-left: auto
+      margin-right: auto
+
+    .side-nav-btn
+      display: block
+      position: absolute
+      left: $scale*2
+      top: 5px
+
+    .side-nav-collapse
+      display: none
+      width: $side-nav-collapse-height
+      height: 100%
+      line-height: 1
+      background-color: #fff
+      position: fixed
+      left: 0
+      top: 0
+      bottom: 0
+      z-index: 101
+      animation: sidenav-effect 0.3s
+
+      li
+        float: none
+
+        a
+          display: block
+          color: #444B54
+          padding: $scale*2
+          -webkit-transition: all 0.35s
+          transition: all 0.35s
+          &.active,
+          &:hover
+            background-color: #444B54 + 10
+            color: #fff
+
+    @keyframes sidenav-effect
+      from
+        left: -300px
+

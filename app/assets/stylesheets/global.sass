@@ -1,0 +1,106 @@
+// Galleries
+.galleries
+  -webkit-column-count: 4
+  -webkit-column-gap: 1px
+  -moz-column-count: 4
+  -moz-column-gap: 1px
+  column-count: 4
+  column-gap: 1px
+
+.image
+  margin-bottom: -3px
+  position: relative
+  transition: all 0.35s
+
+  img
+    width: 100%
+    cursor: zoom-in !important
+
+
+  .delete-image
+    color: transparent
+    position: absolute
+    top: 0
+    right: 0
+    &:before
+      font-size: $scale*7
+      margin: 0
+
+  img,
+  .delete-image
+    cursor: pointer
+
+  img:hover + .delete-image,
+  .delete-image:hover
+    color: $secondary-color
+
+.zoom
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  z-index: 99
+
+  img
+    position: absolute
+    left: 50%
+    top: 0
+    z-index: 100
+    cursor: default !important
+    -webkit-animation: zoom-in 0.35s
+    animation: zoom-in 0.35s
+
+  @-webkit-keyframes zoom-in
+    from
+      transform: scale(0.6, 0.6)
+  @keyframes zoom-in
+    from
+      transform: scale(0.6, 0.6)
+
+  .overlay
+    cursor: zoom-out !important
+
+  .delete-image
+    display: none
+
+
+// Loading
+.loading
+  display: none
+  background-color: #fff
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1000
+  .rotate
+    position: absolute
+    width: 60px
+    height: 60px
+    top: 50%
+    left: 50%
+    margin-top: - 30px
+    margin-left: - 30px
+    animation: rotate 2.0s infinite linear
+  @keyframes rotate
+    100%
+      -webkit-transform: rotate(360deg)
+  .dot1,
+  .dot2
+    width: 60%
+    height: 60%
+    border-radius: 100%
+    background-color: $primary-color
+    position: absolute
+    animation: bounce 2.0s infinite ease-in-out
+  .dot1
+    top: 0
+  .dot2
+    bottom: 0
+  @keyframes bounce
+    0%, 100%
+      -webkit-transform: scale(0)
+    50%
+      -webkit-transform: scale(1)

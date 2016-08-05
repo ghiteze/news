@@ -1,0 +1,60 @@
+$modal-width: 600px
+.modal,
+.modal--overlay
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+
+.modal
+  display: none
+  position: fixed
+  z-index: 999
+
+  .modal--overlay
+    background-color: rgba(#000, 0.5)
+    position: absolute
+    z-index: 4
+    -webkit-animation: overlay 0.35s
+    animation: overlay 0.35s
+  @-webkit-keyframes overlay
+    from
+      opacity: 0
+  @keyframes overlay
+    from
+      opacity: 0
+
+  .modal--content
+    width: $modal-width
+    background-color: #fff
+    margin-left: - ($modal-width/2)
+    padding: $scale*2
+    padding-top: $scale
+    position: absolute
+    left: 50%
+    top: 15%
+    z-index: 5
+    -webkit-animation: modal 0.35s
+    animation: modal 0.35s
+  @-webkit-keyframes modal
+    from
+      opacity: 0
+      transform: scale(1.1, 1.1)
+  @keyframes modal
+    from
+      opacity: 0
+      transform: scale(1.1, 1.1)
+
+  .modal--title
+    text-align: center
+
+  .modal--close
+    position: absolute
+    top: 0
+    right: 0
+
+    &:before
+      font-size: $scale*7
+      margin: 0
+    &:hover
+      color: #ff8a65

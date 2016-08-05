@@ -1,0 +1,42 @@
+.container,
+.grid
+  &:before,
+  &:after
+    clear: both
+    display: block
+    content: ''
+
+.container,
+.col
+  padding-left: $scale
+  padding-right: $scale
+
+.container
+  width: $container-width
+  max-width: $container-max-width
+  margin-left: auto
+  margin-right: auto
+
+.grid
+  margin-left: - ($scale)
+  margin-right: - ($scale)
+
+.col
+  float: left
+
+  // mobile and up
+  @include grid('mobile')
+
+  // tablet and up
+  @media (min-width: 641px)
+    @include grid('tablet')
+
+  // pc and up
+  @media (min-width: 1025px)
+    @include grid('pc')
+
+// tablet and down
+@media (max-width: 1024px)
+  .container
+    width: 100%
+

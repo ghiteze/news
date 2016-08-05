@@ -1,0 +1,25 @@
+.title.grid
+  .col.mobile-10
+    %h2 Settings
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    /
+
+.content
+  .grid
+    = form_tag admin_edit_user_path, method: :patch do
+      .col.mobile-3
+        .field
+          = image_tag "no-image.png", class: "image-preview"
+          = file_field_tag :image, id: "file", class: "image-upload"
+          %label{ for: "file", class: "icon-upload" } Update avatar
+      .col.mobile-9
+        %h3 Change your password
+        .field
+          = password_field(:admin, :password, placeholder: "New password")
+        .field
+          = password_field(:admin, :password_confirmation, placeholder: "Confirm password")
+        .field
+          = password_field(:admin, :current_password, placeholder: "Current password")
+        .field
+          %button{ type: "submit", class: "btn icon-check" } Update

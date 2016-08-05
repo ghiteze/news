@@ -1,0 +1,77 @@
+*
+  font-family: 'Roboto Light'
+  &:focus
+    outline: none
+  &::-moz-focus-inner
+    border: 0
+*,
+*:before,
+*:after
+  box-sizing: border-box
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+body
+  margin: 0
+
+body
+  color: $font-color
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight: normal
+  
+ul
+  display: inline-block
+  list-style: none
+  padding: 0
+
+li
+  float: left
+
+a
+  text-decoration: none
+
+.left
+  float: left
+.right
+  float: right
+.align-left
+  text-align: left
+.align-right
+  text-align: right
+.align-center
+  text-align: center
+
+.header-space
+  height: $side-nav-height
+
+
+.overlay
+  background-color: rgba(#000, 0.95)
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  z-index: 99
+
+.card
+  background-color: #fff
+  box-shadow: 0 1px 1px rgba(0,0,0,0.14)
+
+// Screen
+// tablet and down
+@media (max-width: 1024px)
+  .header-space
+    height: $side-nav-mobile-height

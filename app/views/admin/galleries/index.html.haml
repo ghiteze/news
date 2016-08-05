@@ -1,0 +1,16 @@
+.title.grid
+  .col.mobile-10
+    %h2 Galleries
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = form_for [:admin, @gallery], html: { multipart: true } do |f|
+      = f.file_field :images, multiple: true, id: "file"
+      %label.btn.icon-upload{ for: "file" } Upload
+
+.content
+  .grid
+    .galleries
+      - @galleries.each do |img|
+        .image
+          = image_tag img.attachment.url(:thumb)
+          %span.icon-close.delete-image{ data: { id: img.id } }

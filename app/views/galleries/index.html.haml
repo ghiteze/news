@@ -1,0 +1,12 @@
+#breadcrumb.hide-on-tablet-and-down
+  .container
+    %ul
+      %li= link_to "", root_path, class: "icon-home"
+      %li.icon-forward
+      %li Thư viện ảnh
+#main.page
+  .container.card
+    .galleries
+      - @galleries.each do |img|
+        .image
+          = image_tag img.attachment.url(:thumb)

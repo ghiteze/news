@@ -1,0 +1,47 @@
+= message @category
+
+.title.grid
+  .col.mobile-10
+    %h2 Categories
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    /
+
+.content
+  .grid
+    .col.mobile-3
+      %h2 New Category
+      = form_for [:admin, @category] do |f|
+        .field
+          %label Name
+          = f.text_field :name, id: "name"
+        .field
+          %label Slug
+          = f.text_field :slug, id: "slug"
+        .field
+          %label Parent
+          = select_tag "category[parent]", options_for_select(@categories.map{ |c| [c.name, c.id] }), id: nil, :include_blank => "None"
+        .field
+          = f.button "Submit", class: "btn icon-check"
+
+    .col.mobile-9
+      %table
+        %thead
+          %tr
+            %th.p30 Name
+            %th.p30 Slug
+            %th.p20 Parent
+            %th.p20 #
+        %tbody
+          - @categories.each do |category|
+            %tr
+              %td.p30= category.name
+              %td.p30= category.slug
+              %td.p20= category.parent_name
+              %td.p20
+                = link_to "", "#", class: "modal--trigger icon-edit", data: { target: "edit-form", id: category.id }
+                |
+                = button_to admin_category_path(category), method: :delete, class: "icon-trash" do
+                  /
+
+= render 'admin/categories/modal'

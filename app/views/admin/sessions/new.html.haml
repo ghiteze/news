@@ -1,0 +1,11 @@
+.second-body
+  = link_to root_path, class: "logo" do
+    = image_tag "logo-white.png"
+#login
+  = form_tag admin_login_path, method: :post do
+    .field
+      = text_field_tag :username, nil, placeholder: 'Username', autofocus: true
+    .field
+      = password_field_tag :password, nil, placeholder: 'Password'
+    .field
+      = button_tag '', class: "btn icon-login"

@@ -1,0 +1,27 @@
+.title.grid
+  .col.mobile-10
+    %h2 Slides
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = link_to "New Slide", new_admin_slide_path, class: "btn icon-plus"
+
+.content
+  %table
+    %thead
+      %tr
+        %th.p20 Image
+        %th.p40 Title
+        %th.p20 Active
+        %th.p20 #
+    %tbody
+      - @slides.each do |slide|
+        %tr
+          %td.p20= image_tag slide.images.first.attachment.url(:thumb)
+          %td.p40= link_to slide.title, edit_admin_slide_path(slide)
+          %td.p20
+            %span{ class: slide.is_active ? "slide-active" : "slide-deactive"}
+          %td.p20
+            = link_to "", edit_admin_slide_path(slide), class: "icon-edit"
+            |
+            = button_to admin_slide_path(slide), method: :delete, class: "icon-trash" do
+              /

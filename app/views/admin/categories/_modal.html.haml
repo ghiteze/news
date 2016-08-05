@@ -1,0 +1,17 @@
+.modal#edit-form
+  .modal--overlay
+  .modal--content
+    %h2.modal--title Edit Category
+    %a{ href: "#", class: "modal--close icon-close" }
+    = form_tag("/admin/categories/", class: "form", method: :patch) do
+      .field
+        %label Name
+        %input{ type: "text", name: "category[name]", id: "category_name" }
+      .field
+        %label Slug
+        %input{ type: "text", name: "category[slug]", id: "category_slug" }
+      .field
+        %label Parent
+        = select_tag"category[parent]", options_for_select(@categories.map{ |c| [c.name, c.id] }), include_blank: "None"
+      .field
+        %button.btn.icon-check{ type: "submit" } Submit

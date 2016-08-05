@@ -1,0 +1,38 @@
+= message @user
+
+.title.grid
+  .col.mobile-10
+    %h2 Users
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    /
+
+.content
+  .grid
+    .col.mobile-4
+      %h2 New User
+      = form_tag admin_users_path do
+        .field
+          = text_field_tag "admin[username]", nil, placeholder: "Username"
+        .field
+          = password_field_tag "admin[password]", nil, placeholder: "Password"
+        .field
+          = select_tag "roles", options_for_select(Role.all.map{ |c| [c.name, c.id] }), :include_blank => "Role"
+        .field
+          %button{ type: "submit", class: "btn icon-check" } Submit
+
+    .col.mobile-8
+      %table
+        %thead
+          %tr
+            %th.p40 Username
+            %th.p30 Role
+            %th.p10 #
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td.p40= user.username
+              %td.p30= user.roles.first.name
+              %td.p10
+                = button_to admin_user_path(user), method: :delete, class: "icon-trash" do
+                  /

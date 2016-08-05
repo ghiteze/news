@@ -1,0 +1,437 @@
+*
+  color: #777
+
+body
+  background-color: #e4e8eb
+  
+::-webkit-scrollbar
+  width: 5px
+
+::-webkit-scrollbar-thumb
+  background-color: $primary-color
+
+// Table
+table
+  width: 100%
+
+  tr
+    display: block
+
+  th
+    text-align: left
+    
+  th,
+  td
+    display: inline-block
+    word-break: break-all
+    padding: $scale
+
+  thead
+    tr
+      border-bottom: 1px solid #ccc
+
+  tbody
+    tr
+      transition: all 0.35s
+      &:hover
+        background-color: #eee
+
+  a,
+  .icon-edit,
+  .icon-trash
+    color: inherit
+    &:before
+      font-size: $scale*2 + $scale/2
+      margin: 0
+    &:hover
+      color: $secondary-color
+
+  form
+    display: inline-block
+
+  .p5
+    width: 4.5%
+  .p10
+    width: 9.5%
+  .p15
+    width: 14.5%
+  .p20
+    width: 19.5%
+  .p30
+    width: 29.5%
+  .p40
+    width: 39.5%
+  .p50
+    width: 49.5%
+
+
+.avatar
+  display: inline-block
+  width: 40px
+  img
+    width: 100%
+    border-radius: 100%
+    vertical-align: middle
+
+
+
+// Login
+$login-width: 400px
+.second-body
+  background: -moz-linear-gradient(45deg, rgba(255,222,150,1) 0%, rgba(0,128,128,1) 100%)
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,222,150,1)), color-stop(100%, rgba(0,128,128,1)))
+  background: -webkit-linear-gradient(45deg, rgba(255,222,150,1) 0%, rgba(0,128,128,1) 100%)
+  background: -o-linear-gradient(45deg, rgba(255,222,150,1) 0%, rgba(0,128,128,1) 100%)
+  background: -ms-linear-gradient(45deg, rgba(255,222,150,1) 0%, rgba(0,128,128,1) 100%)
+  background: linear-gradient(45deg, rgba(255,222,150,1) 0%, rgba(0,128,128,1) 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008080', endColorstr='#FFDE96',GradientType=1 )
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  z-index: 2
+  .logo
+    display: block
+    text-align: center
+    margin-top: $scale*5
+
+#login
+  width: $login-width
+  background-color: rgba(#fff, 0.3)
+  border-radius: 4px
+  margin-left: - ($login-width/2)
+  margin-top: 10%
+  padding: $scale*2
+  position: absolute
+  left: 50%
+  z-index: 3
+
+  input,
+  button
+    border-radius: 0
+    height: 40px
+
+  input
+    background-color: rgba(#fff, 0.4)
+    color: #000
+    border: 0
+    box-shadow: none
+    &::-webkit-input-placeholder
+      color: #555
+    &::-moz-placeholder
+      color: #555
+    &:-moz-placeholder
+      color: #555
+  button
+    width: 100%
+    margin-top: $scale*2
+
+
+
+
+
+// Header
+$header-height: 55px
+header
+  height: $header-height
+  background-color: #fff
+  text-align: right
+  border-bottom: 1px solid #ddd
+  padding-left: $scale*2
+  padding-right: $scale*2
+
+  a:hover
+    color: $secondary-color
+
+  .control,
+  .avatar,
+  .button_to
+    display: inline-block
+
+  .control
+    margin-top: $scale
+
+  .button_to
+    input[type=submit]
+      background-color: transparent
+      font-size: inherit
+      border: 0
+      cursor: pointer
+      outline: 0
+      padding: 0
+      &:hover
+        color: $secondary-color
+
+  .home-preview
+    color: $secondary-color
+    margin-right: 50px
+
+
+
+// Sidebar
+$aside-width: 220px
+aside
+  width: 17%
+  min-width: $aside-width
+  background-color: #363941
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  z-index: 2
+
+  ul
+    width: 100%
+  li
+    float: none
+    a
+      display: block
+      color: #777
+      padding: $scale*2
+      transition: all 0.35s
+      &.active,
+      &:hover
+        background-color: #40434b
+        color: #fff
+      &:before
+        margin-right: $scale*2 - $scale/2 !important
+
+  .dashboard
+    height: $header-height !important
+    background-color: $primary-color !important
+    color: #fff !important
+    &:hover
+      background-color: $primary-color !important
+
+// Main
+#main
+  float: right
+  max-width: 83%
+  width: -webkit-calc(100% - #{$aside-width})
+  width:    -moz-calc(100% - #{$aside-width})
+  width:         calc(100% - #{$aside-width})
+  padding: $scale*2
+
+  .title
+    height: 120px
+    background-color: #fff
+    margin: - ($scale*2)
+    padding: $scale
+
+    h2
+      line-height: 1
+      padding-top: $scale*2 + $scale/2
+      padding-bottom: $scale/2
+
+    p
+      font-style: italic
+
+    .btn
+      margin-top: $scale*4
+
+    .col:last-child
+      text-align: right
+
+  .content
+    background-color: #fff
+    border-radius: 4px
+    margin-top: $scale*4
+    padding: $scale*2
+
+
+// Dashboard
+#dashboard
+  margin-top: 0 !important
+
+  .grid
+    margin-bottom: $scale*2
+
+  .xxx
+    background-color: #fff
+    border-radius: 4px
+    padding: $scale*2
+
+    span
+      float: left
+      display: inline-block
+      width: $scale*7
+      height: $scale*7
+      text-align: center
+      border-radius: 100%
+      margin-right: $scale
+      &:before
+        line-height: $scale*7
+        color: #fff
+
+    .icon-galleries 
+      background-color: #a48ad4
+    .icon-slide
+      background-color: #fa8564
+    .icon-logs
+      background-color: #1fb5ac
+    .icon-articles
+      background-color: #aec785
+
+    h3
+      font-size: 23px
+      font-weight: bold
+
+    p
+      font-size: 15px
+
+// Logs
+.logs
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    width: $scale/2
+    height: 100%
+    background-color: #ddd
+  li
+    float: none
+    line-height: 4
+    position: relative
+    padding-left: $scale*3
+    &:before
+      content: ''
+      position: absolute
+      left: - ($scale - $scale/4)
+      top: 50%
+      width: $scale*2
+      height: $scale*2
+      background-color: #ddd
+      border-radius: 100%
+
+    .avatar img
+      vertical-align: -25px
+    span
+      line-height: 1
+      font-size: 12px
+      position: absolute
+      top: 47px
+      left: 69px
+    a
+      color: $secondary-color
+    i
+      display: inline-block
+      line-height: 1.5
+      font-size: 13px
+    p
+      display: inline-block
+      
+  .create,
+  .update,
+  .delete
+    color: #fff
+    border-radius: 3px
+    margin-left: $scale/2
+    margin-right: $scale/2
+    padding: $scale/4 $scale
+
+  .create
+    background-color: #27ae60
+  .update
+    background-color: #2980b9
+  .delete
+    background-color: #c0392b
+
+
+// Button to
+.button_to
+  .icon-trash
+    background-color: inherit
+    font-size: inherit
+    border: 0
+    outline: 0
+    cursor: pointer
+    padding: 0
+
+
+
+// Message
+.message
+  width: 350px
+  opacity: 0
+  padding: $scale
+  position: fixed
+  right: $scale
+  bottom: $scale
+  z-index: 100
+  -webit-animation: msg 4s
+  animation: msg 4s
+
+  &.error
+    background-color: #c0392b
+  &.success
+    background-color: #27ae60
+
+  li
+    display: block
+    width: 100%
+    line-height: 1.5
+    color: #fff
+
+@-webkit-keyframes msg
+  0%
+    opacity: 0
+  10%
+    opacity: 1
+  75%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes msg
+  0%
+    opacity: 0
+  10%
+    opacity: 1
+  75%
+    opacity: 1
+  100%
+    opacity: 0
+
+
+// Image upload
+.image-preview
+  width: 170px
+  height: auto
+
+.image-upload + .icon-upload
+  width: 170px
+  border: 1px solid #ccc
+  border-radius: 30px
+  cursor: pointer
+  margin-top: $scale
+  padding: $scale/2
+  transition: all 0.35s
+  &:hover
+    background-color: #ddd
+  &:before
+    font-size: $scale*4
+    vertical-align: middle
+
+
+// Slide
+.slide-active,
+.slide-deactive
+  display: inline-block
+  width: $scale + $scale/2
+  height: $scale + $scale/2
+  border-radius: 100%
+  margin-left: $scale*2
+
+.slide-active
+  background-color: #27ae60
+
+.slide-deactive
+  background-color: #c0392b
+
+
+// Setting
+.social
+  margin-bottom: $scale*3
+  .btn
+    width: 100%

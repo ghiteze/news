@@ -1,0 +1,47 @@
+!!!5
+%html
+  %head
+    %meta{ charset: "utf-8" }
+    %title News
+    %meta{ http: { equiv: "X-UA-Compatible" }, content: "IE=edge" }
+    %meta{ name: "theme-color", content: "#ccc" }
+    %meta{ name: "msapplication-TileColor", content: "#ccc" }
+    %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
+    %meta{ name: "mobile-web-app-capable", content: "yes" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" }
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application'
+    <meta property="og:url"           content="http://localhost:3000/tai-sao-lai-nhu-the-duoc-nhi" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+  %body
+    .loading
+      .rotate
+        .dot1
+        .dot2
+    #fb-root
+    :javascript
+      (function (w, d) {
+        var ld = d.getElementsByClassName('loading')[0];
+        ld.style.display = 'block';
+        d.body.style.overflow = 'hidden';
+        w.onload = function () {
+          ld.style = '';
+          d.body.style = '';
+        };
+      }(window, document));
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.async=true;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1063087910414032&version=v2.6";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    #wrapper
+      = render 'shared/header'
+      = yield
+      = render 'shared/footer'
+      = javascript_include_tag 'application'

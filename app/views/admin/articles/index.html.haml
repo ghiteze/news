@@ -1,0 +1,34 @@
+.title.grid
+  .col.mobile-10
+    %h2 Articles
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+  .col.mobile-2
+    = link_to "New Article", new_admin_article_path, class: "btn icon-plus"
+
+.content
+  %table
+    %thead
+      %tr
+        %th.p40 Title
+        %th.p20 Category
+        %th.p20 Date
+        %th.p20 #
+    %tbody
+      - @articles['data'].each do |article|
+        %tr
+          %td.p40= link_to article.title, edit_admin_article_path(article)
+          %td.p20= article.category.name
+          %td.p20= article.created_at.strftime('%d %B, %Y')
+          %td.p20
+            = link_to "", edit_admin_article_path(article), class: "icon-edit"
+            |
+            = button_to admin_article_path(article), method: :delete, class: "icon-trash" do
+              /
+  .pagination
+    %ul
+      %li.first-page= link_to "", admin_article_page_path(1), class: "icon-back"
+      %li
+        %ul.pages
+          - @articles['total_page'].times do |page|
+            %li= link_to page + 1, admin_article_page_path(page + 1), { class: ("active" if @articles['current_page'] == (page + 1)) }
+      %li.last-page= link_to "", admin_article_page_path(@articles['total_page']), class: "icon-forward"

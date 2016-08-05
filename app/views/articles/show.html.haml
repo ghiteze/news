@@ -1,0 +1,32 @@
+#breadcrumb.hide-on-tablet-and-down
+  .container
+    %ul
+      %li= link_to "", root_path, class: "icon-home"
+      %li.icon-forward
+      %li= link_to "#{@category.name}", category_path(@category.slug)
+#main.page
+  .container.card
+    %h1.title= @article.title
+    %span.time.icon-clock= @article.created_at.strftime("%d/%m/%Y - %H:%M")
+
+    .fb-like{ data: { href: "http://localhost:3000/#{@article.slug}", layout: "button_count", action: "like", size: "small", show: { faces: "false" }, share: "true" } }
+    %br
+
+    %strong.summary= @article.summary
+
+    .content
+      = @article.content.html_safe
+
+    %h3.title TIN LIÊN QUAN
+    #related-news-ctrl
+      .prev.icon-back
+      .next.icon-forward
+    #related-news
+      .wrapper
+        - @related_news.each do |article|
+          .article
+            = link_to article_path(article.slug, format: "html") do
+              = image_tag article.image_src
+            %h2= link_to article.title, article_path(article.slug, format: "html")
+
+    .fb-comments{ data: { href: "http://localhost:3000/#{@article.slug}", num_posts: 5, order_by: "reverse_time", width: "100%" } }

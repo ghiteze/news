@@ -1,0 +1,9 @@
+<!--
+========== HEADER ========== --!>
+%header
+  = link_to "Home preview", root_path, target: "_blank", class: "home-preview icon-home"
+  .control
+    %span.avatar= image_tag "no-avatar.jpg"
+    %span.name= link_to current_admin.username, admin_settings_path
+    |
+    = button_to "Logout", admin_logout_path, method: :delete
